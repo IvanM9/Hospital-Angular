@@ -14,9 +14,7 @@ export class Connection {
 
     get(route: string) {
         try {
-            
-            this.clientHttp.get(this.api+route).subscribe(resp => { this.aux = resp; });
-            return this.aux;
+            return this.clientHttp.get(this.api+route);
         } catch (error) {
             return null;
         }
