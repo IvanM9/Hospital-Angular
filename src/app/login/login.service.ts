@@ -8,10 +8,15 @@ export class LoginService {
 
   constructor(private connection: Connection) { }
 
-  login(credentials: any) {
-    let aux = this.connection.post("login", credentials);
-    if (!aux)
-      return "Error de conexión";
-    return aux;
+  async login(credentials: any) {
+    try {
+      
+      let aux = await this.connection.post("login", credentials);
+      if (!aux || aux.status != "success" || aux.status!=200) 
+        return "Error de conexión";
+      return aux;
+    } catch (error) {
+      return "Error";
+    }
   }
 }
