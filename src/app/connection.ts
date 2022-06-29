@@ -4,28 +4,30 @@ import { Injectable } from '@angular/core';
 
 @Injectable({
     providedIn: 'root'
-  })
+})
 export class Connection {
     api: string;
-    private aux:any = {};
+    private aux: any = {};
     constructor(private clientHttp: HttpClient) {
         this.api = environment.api;
     }
 
     get(route: string) {
         try {
-            
-            this.clientHttp.get(this.api+route).subscribe(resp => { this.aux = resp; });
+            this.clientHttp.get(this.api + route).subscribe(
+                resp => { this.aux = Object.assign(this.aux, resp); },
+                error => { this.aux = Object.assign(this.aux, error); });
             return this.aux;
         } catch (error) {
             return null;
         }
     }
 
-    post(route: string, data: any) {
+    async post(route: string, data: any) {
         try {
-            
-            this.clientHttp.post(this.api + route, data).subscribe(resp => { this.aux = resp; });
+            await this.clientHttp.post(this.api + route, data).subscribe(
+                resp => { this.aux = Object.assign(this.aux, resp); },
+                error => { this.aux = Object.assign(this.aux, error); });
             return this.aux;
         } catch (error) {
             return null;
@@ -34,8 +36,9 @@ export class Connection {
 
     put(route: string, data: any) {
         try {
-            
-            this.clientHttp.put(this.api + route, data).subscribe(resp => { this.aux = resp; });
+            this.clientHttp.put(this.api + route, data).subscribe(
+                resp => { this.aux = Object.assign(this.aux, resp); },
+                error => { this.aux = Object.assign(this.aux, error); });
             return this.aux;
         } catch (error) {
             return null;
@@ -44,8 +47,9 @@ export class Connection {
 
     delete(route: string) {
         try {
-            
-            this.clientHttp.delete(this.api + route).subscribe(resp => { this.aux = resp; });
+            this.clientHttp.delete(this.api + route).subscribe(
+                resp => { this.aux = Object.assign(this.aux, resp); },
+                error => { this.aux = Object.assign(this.aux, error); });
             return this.aux;
         } catch (error) {
             return null;

@@ -16,9 +16,10 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login() {
-    if (this.credentials.ci.length > 0 && this.credentials.password.length > 0) {
-      console.log(this.loginService.login(this.credentials));
+  async login() {
+    if (this.credentials.cedula.length > 0 && this.credentials.password.length > 0) {
+      let aux = await this.loginService.login(this.credentials);
+      console.log(aux);
     } else
       alert("Ingrese los datos");
   }
