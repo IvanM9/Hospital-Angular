@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { LoginService } from './login.service';
+import { Router } from '@angular/router';
+import { Connection } from '../connection';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +10,18 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: Connection, private route:Router) { }
 
   credentials: any = { "cedula": "", "password": "" };
   ngOnInit(): void {
 
   }
 
-  async login() {
-    if (this.credentials.cedula.length > 0 && this.credentials.password.length > 0) {
-      let aux = await this.loginService.login(this.credentials);
-      console.log(aux);
-    } else
-      alert("Ingrese los datos");
+  login() {
+    this.loginService.post("login", this.credentials).subscribe(res => {
+      let aux: any = Object.assign({}, res);
+      console.log(aux)
+        this.route.navigate(["/especialidad"]);
+    }, err => {console.log(err)});
   }
-
 }
