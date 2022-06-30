@@ -22,7 +22,11 @@ export class LoginComponent implements OnInit {
     this.loginService.post("login", this.credentials).subscribe(res => {
       let aux: any = Object.assign({}, res);
       console.log(aux)
+      if(aux.status!="success"){
+        alert("Login failed");
+      }else{
         this.route.navigate(["/dashboard"]);
+      }
     }, err => {console.log(err)});
 
   }
