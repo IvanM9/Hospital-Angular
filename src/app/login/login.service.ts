@@ -12,8 +12,7 @@ export class LoginService {
     try {
       
       let aux = await this.connection.post("login", credentials);
-      if (!aux || aux.status != "success" || aux.status!=200) 
-        return "Error de conexión";
+      
       return aux;
     } catch (error) {
       return "Error";

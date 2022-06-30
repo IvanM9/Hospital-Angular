@@ -14,21 +14,17 @@ export class Connection {
 
     get(route: string) {
         try {
-            this.clientHttp.get(this.api + route).subscribe(
-                resp => { this.aux = Object.assign(this.aux, resp); },
-                error => { this.aux = Object.assign(this.aux, error); });
-            return this.aux;
+            return this.clientHttp.get(this.api+route);
         } catch (error) {
             return null;
         }
     }
 
-    async post(route: string, data: any) {
+    post(route: string, data: any) {
         try {
-            await this.clientHttp.post(this.api + route, data).subscribe(
-                resp => { this.aux = Object.assign(this.aux, resp); },
-                error => { this.aux = Object.assign(this.aux, error); });
-            return this.aux;
+            
+            return this.clientHttp.post(this.api + route, data);
+            
         } catch (error) {
             return null;
         }
@@ -36,21 +32,17 @@ export class Connection {
 
     put(route: string, data: any) {
         try {
-            this.clientHttp.put(this.api + route, data).subscribe(
-                resp => { this.aux = Object.assign(this.aux, resp); },
-                error => { this.aux = Object.assign(this.aux, error); });
-            return this.aux;
+            
+            return this.clientHttp.put(this.api + route, data);
         } catch (error) {
             return null;
         }
     }
 
-    delete(route: string) {
+    delete(route: string,datos:any) {
         try {
-            this.clientHttp.delete(this.api + route).subscribe(
-                resp => { this.aux = Object.assign(this.aux, resp); },
-                error => { this.aux = Object.assign(this.aux, error); });
-            return this.aux;
+            console.log(datos);
+            return this.clientHttp.delete(this.api + route+"/"+datos);
         } catch (error) {
             return null;
         }

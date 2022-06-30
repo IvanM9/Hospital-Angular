@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AgregaPersonaComponent } from './personas/agrega-persona/agrega-persona.component';
 import { ListarPersonasComponent } from './personas/listar-personas/listar-personas.component';
+import { EditarPersonasComponent } from './personas/editar-personas/editar-personas.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ListarPersonasComponent } from './personas/listar-personas/listar-perso
     LoginComponent,
     DashboardComponent,
     AgregaPersonaComponent,
-    ListarPersonasComponent
+    ListarPersonasComponent,
+    EditarPersonasComponent
   ],
   imports: [
     BrowserModule,
