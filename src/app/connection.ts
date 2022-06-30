@@ -14,7 +14,8 @@ export class Connection {
 
     get(route: string) {
         try {
-            return this.clientHttp.get(this.api + route);
+         return this.clientHttp.get(this.api + route);
+
         } catch (error) {
             throw new Error("error");
         }
@@ -22,7 +23,10 @@ export class Connection {
 
     post(route: string, data: any) {
         try {
+
             return this.clientHttp.post(this.api + route, data)
+
+
         } catch (error) {
             throw new Error("error");
             
@@ -32,14 +36,16 @@ export class Connection {
     put(route: string, data: any) {
         try {
             return this.clientHttp.put(this.api + route, data)
+
         } catch (error) {
             throw new Error("error");
         }
     }
 
-    delete(route: string) {
+    delete(route: string,datos:any) {
         try {
             return this.clientHttp.delete(this.api + route)	
+
         } catch (error) {
             throw new Error("error");
         }

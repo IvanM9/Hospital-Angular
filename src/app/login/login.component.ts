@@ -17,11 +17,13 @@ export class LoginComponent implements OnInit {
 
   }
 
+
   login() {
     this.loginService.post("login", this.credentials).subscribe(res => {
       let aux: any = Object.assign({}, res);
       console.log(aux)
-        this.route.navigate(["/especialidad"]);
+        this.route.navigate(["/dashboard"]);
     }, err => {console.log(err)});
+
   }
 }
