@@ -1,50 +1,53 @@
 import { environment } from "src/environments/environment";
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
-  })
+})
 export class Connection {
     api: string;
-    private aux:any = {};
     constructor(private clientHttp: HttpClient) {
         this.api = environment.api;
     }
 
     get(route: string) {
         try {
-            return this.clientHttp.get(this.api+route);
+         return this.clientHttp.get(this.api + route);
+
         } catch (error) {
-            return null;
+            throw new Error("error");
         }
     }
 
     post(route: string, data: any) {
         try {
-            
-            return this.clientHttp.post(this.api + route, data);
-            
+
+            return this.clientHttp.post(this.api + route, data)
+
+
         } catch (error) {
-            return null;
+            throw new Error("error");
+            
         }
     }
 
     put(route: string, data: any) {
         try {
-            
-            return this.clientHttp.put(this.api + route, data);
+            return this.clientHttp.put(this.api + route, data)
+
         } catch (error) {
-            return null;
+            throw new Error("error");
         }
     }
 
     delete(route: string,datos:any) {
         try {
-            console.log(datos);
-            return this.clientHttp.delete(this.api + route+"/"+datos);
+            return this.clientHttp.delete(this.api + route)	
+
         } catch (error) {
-            return null;
+            throw new Error("error");
         }
     }
 }
