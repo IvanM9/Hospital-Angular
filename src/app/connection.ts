@@ -42,7 +42,7 @@ export class Connection {
         }
     }
 
-    delete(route: string,datos:any) {
+    delete(route: string) {
         try {
             return this.clientHttp.delete(this.api + route)	
 

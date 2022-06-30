@@ -20,8 +20,7 @@ import { EditarPersonasComponent } from './personas/editar-personas/editar-perso
     AppComponent,
     LoginComponent,
 
-    EspecialidadComponent
-
+    EspecialidadComponent,
     DashboardComponent,
     AgregaPersonaComponent,
     ListarPersonasComponent,

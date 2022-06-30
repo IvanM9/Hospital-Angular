@@ -22,6 +22,6 @@ export class ServicioPersonasService {
   }
 
   eliminar_personas(datos:any):any {
-    return this.connection.delete("persona",datos);
+    return this.connection.delete("persona/"+datos);
   }
 }
