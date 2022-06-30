@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+.bgContainer {
+    /* background-color: #e8eaf6; */
+    background-color: #eef0ff;
+    height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.containerCenterScreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.containerCustom {
+    width: 470px;
+}
+
+.card {
+    border-radius: 0px !important;
+}
+
+.btn {
+    border-radius: 17px !important;
+    font-weight: 600;
+    background: transparent;
+    border-color: #007bff;
+    color: #007bff;
+}
+
+label {
+    font-weight: 200;
+    font-size: 14px;
+    letter-spacing: 0.11rem;
+}
+
+.titleForm {
+    font-weight: 400;
+    letter-spacing: 0.15rem;
+    font-size: 30px;
+    text-align: center;
+}
+.card-title {
+    color: rgba(2, 2, 2, 0.842);
+    font-weight: 300;
+    font-size: 15px;
+    padding-bottom: 5px;
+}
