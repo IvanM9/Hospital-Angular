@@ -19,15 +19,22 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    this.loginService.post("login", this.credentials).subscribe(res => {
-      let aux: any = Object.assign({}, res);
-      console.log(aux)
-      if(aux.status!="success"){
-        alert("Login failed");
-      }else{
-        this.route.navigate(["/dashboard"]);
-      }
-    }, err => {console.log(err)});
+    if(this.credentials.cedula.length > 0 || this.credentials.password.length > 0){
+
+      this.loginService.post("login", this.credentials).subscribe(res => {
+        let aux: any = Object.assign({}, res);
+        console.log(aux)
+        if(aux.status!="success"){
+          alert("Login failed");
+        }else{
+          sessionStorage.setItem("token_id", aux.data);
+          this.route.navigate(["/dashboard"]);
+        }
+      }, err => {console.log(err)});
+    }
+    else{
+      alert("LLene todos los campos")
+    }
 
   }
 }

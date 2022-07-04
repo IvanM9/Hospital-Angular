@@ -11,11 +11,11 @@
                 <form (submit)="login()">
                     <div class="form-group mt-2">
                         <label for="InputCI">Cédula</label>
-                        <input type="text" class="form-control" id="InputCI" [(ngModel)]="credentials.cedula" name="ci">
+                        <input type="text" class="form-control" id="InputCI" [(ngModel)]="credentials.cedula" name="ci" required>
                     </div>
                     <div class="form-group mt-2">
                         <label for="InputPassword">Contraseña</label>
-                        <input type="password" class="form-control" id="InputPassword" [(ngModel)]="credentials.password" name="password">
+                        <input type="password" class="form-control" id="InputPassword" [(ngModel)]="credentials.password" name="password" required>
                     </div>
                     <div class=" container mt-4">
                         <div class="row justify-content-center">
