@@ -1,59 +1,69 @@
 <section class="content">
-    <div class="container-fluid">
-        <!-- Main row -->
-        <div class="row">
-            <!-- Left col -->
-            <section class="col-12">
-                <!-- Custom tabs (Charts with tabs)-->
-                <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">Lista de personas</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                      <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                          <th>Cedula</th>
-                          <th>Apellidos</th>
-                          <th>Nombres</th>
-                          <th>Celular</th>
-                          <th>Mail</th>
-                          <th>Fecha de Nacimiento</th>
-                          <th>Genero</th>
-                          <th>Ocupacion</th>
-                          <th>Tipo de Sangre</th>
-                          <th>Ciudad</th>
-                          <th>Acciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let persona of Personas; let control=index">
-                                <td>{{persona.cedula}}</td>
-                                <td>{{persona.apellidos}}</td>
-                                <td>{{persona.nombres}}</td>
-                                <td>{{persona.celular}}</td>
-                                <td>{{persona.mail}}</td>
-                                <td>{{persona.fecha_nacimiento}}</td>
-                                <td>{{persona.genero}}</td>
-                                <td>{{persona.ocupacion}}</td>
-                                <td>{{persona.tipo_sangre}}</td>
-                                <td>{{persona.ciudad}}</td>
-                                <td> 
-                                    <a class="btn btn-outline-warning" (click)="editapersona(persona)">Editar</a> | 
-                                    <a class="btn btn-outline-danger"role="button" (click)="borrarregistro(persona.cedula)">Borrar</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-            </section>
-            <!-- /.Left col -->
-            <!-- right col (We are only adding the ID to make the widgets sortable)-->
-           
+  <div class="container-fluid">
+    <!-- Main row -->
+    <div class="row">
+      <!-- Left col -->
+      <section class="col-auto">
+        <!-- Custom tabs (Charts with tabs)-->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Lista de personas</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Cedula</th>
+                  <th>Apellidos</th>
+                  <th>Nombres</th>
+                  <th>Celular</th>
+                  <th>Mail</th>
+                  <th>Fecha de Nacimiento</th>
+                  <th>Genero</th>
+                  <th>Ocupacion</th>
+                  <th>Tipo de Sangre</th>
+                  <th>Ciudad</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let persona of Personas; let control=index">
+                  <td>{{persona.cedula}}</td>
+                  <td>{{persona.apellidos}}</td>
+                  <td>{{persona.nombres}}</td>
+                  <td>{{persona.celular}}</td>
+                  <td>{{persona.mail}}</td>
+                  <td>{{persona.fecha_nacimiento}}</td>
+                  <td>{{persona.genero}}</td>
+                  <td>{{persona.ocupacion}}</td>
+                  <td>{{persona.tipo_sangre}}</td>
+                  <td>{{persona.ciudad}}</td>
+                  <td>
+                    <a class="btn btn-outline-warning" data-toggle="modal" data-bs-toggle="modal"
+                      data-bs-target="#editPersonaModal" (click)="editapersona(persona)">Editar</a> |
+                    <a class="btn btn-outline-danger" role="button" (click)="borrarregistro(persona.cedula)">Borrar</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
         </div>
-        <!-- /.row (main row) -->
-    </div><!-- /.container-fluid -->
-</section>            
+      </section>
+      <!-- /.Left col -->
+      <!-- right col (We are only adding the ID to make the widgets sortable)-->
+
+    </div>
+    <!-- /.row (main row) -->
+  </div><!-- /.container-fluid -->
+</section>
+
+<div id="editPersonaModal" class="modal fade">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <app-editar-personas [persona]="edit" *ngIf="cargado"></app-editar-personas>
+      <button type="button"class="btn-secondary" data-bs-dismiss="modal" aria-label="Close" (click)="cerrarEdicion()">Cancelar</button>
+    </div>
+  </div>
+</div>

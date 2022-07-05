@@ -8,47 +8,52 @@ import { Connection } from '../connection';
 })
 export class EspecialidadComponent implements OnInit {
 
-  constructor(private connection:Connection) { }
+  constructor(private connection: Connection) { }
 
-  lista:any[] = [];
-  datos:any={};
+  lista: any[] = [];
+  datos: any = {};
   ngOnInit(): void {
-    this.connection.post("especialidades",null).subscribe(res => {
+    this.connection.post("especialidades", null).subscribe(res => {
       let aux: any = Object.assign({}, res);
-      this.lista= Object.values(aux.data);
+      this.lista = Object.values(aux.data);
+      for (const element of this.lista) {
+        element.fecha_registro = element.fecha_registro.substring(0, 10);
+        element.fecha_modificacion = element.fecha_modificacion.substring(0, 10);
+      }
       console.log(this.lista)
-    }, err => {console.log(err)});
+    }, err => { console.log(err) });
     this.resetDatos();
   }
+  
 
-  resetDatos(){
-    this.datos={"id":0,"descripcion":"", "estado":1, "nombre_especialidad":"", "fecha_registro":"", "fecha_modificacion":""};
+  resetDatos() {
+    this.datos = { "id": 0, "descripcion": "", "estado": 1, "nombre_especialidad": "", "fecha_registro": "", "fecha_modificacion": "" };
   }
-  eliminar(id:number){
-    this.connection.delete("especialidad/"+id).subscribe(res => {
+  eliminar(id: number) {
+    this.connection.delete("especialidad/" + id).subscribe(res => {
       console.log(res)
       this.ngOnInit();
-    }, err => {console.log(err)});
+    }, err => { console.log(err) });
   }
 
-  seleccionar(datos:any){
+  seleccionar(datos: any) {
     console.log(datos);
-    this.datos=datos;
+    this.datos = datos;
   }
 
-  editar(){
-    this.connection.put("especialidad",this.datos).subscribe(res => {
+  editar() {
+    this.connection.put("especialidad", this.datos).subscribe(res => {
       console.log(res)
       this.ngOnInit();
-    }, err => {console.log(err)});
+    }, err => { console.log(err) });
     this.resetDatos();
   }
 
-  agregar(){
-    this.connection.post("crear-especialidad",this.datos).subscribe(res => {
+  agregar() {
+    this.connection.post("crear-especialidad", this.datos).subscribe(res => {
       console.log(res)
       this.ngOnInit();
-    }, err => {console.log(err)});
+    }, err => { console.log(err) });
     this.resetDatos();
   }
 }
