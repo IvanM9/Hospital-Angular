@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicioPersonasService } from '../servicio-personas.service';
 
@@ -11,7 +11,7 @@ export class EditarPersonasComponent implements OnInit {
 
   constructor(private service:ServicioPersonasService, private router: Router) { }
 
-  public static persona:any;
+  @Input() persona:any;
 
   datos: any = { 
     "cedula": "",
@@ -32,22 +32,22 @@ export class EditarPersonasComponent implements OnInit {
   format_fecha_nacimiento: string="";
 
   ngOnInit(): void {
-    this.format_fecha_nacimiento=EditarPersonasComponent.persona.fecha_nacimiento;
+    console.log(this.persona);
+    this.format_fecha_nacimiento=this.persona.fecha_nacimiento;
     this.format_fecha_nacimiento= this.format_fecha_nacimiento.substring(0,10);
-    console.log(EditarPersonasComponent.persona);
-    this.datos.cedula=EditarPersonasComponent.persona.cedula;
-    this.datos.apellidos=EditarPersonasComponent.persona.apellidos;
-    this.datos.nombres=EditarPersonasComponent.persona.nombres;
-    this.datos.tipo_persona=EditarPersonasComponent.persona.tipo_persona;
-    this.datos.especialidad=EditarPersonasComponent.persona.especialidad;
-    this.datos.celular=EditarPersonasComponent.persona.celular;
-    this.datos.correo=EditarPersonasComponent.persona.correo;
+    this.datos.cedula=this.persona.cedula;
+    this.datos.apellidos=this.persona.apellidos;
+    this.datos.nombres=this.persona.nombres;
+    this.datos.tipo_persona=this.persona.tipo_persona;
+    this.datos.especialidad=this.persona.especialidad;
+    this.datos.celular=this.persona.celular;
+    this.datos.correo=this.persona.correo;
     this.datos.fecha_nacimiento= this.format_fecha_nacimiento;
-    this.datos.genero=EditarPersonasComponent.persona.genero;
-    this.datos.ocupacion=EditarPersonasComponent.persona.ocupacion;
-    this.datos.tipo_sangre=EditarPersonasComponent.persona.tipo_sangre;
-    this.datos.ciudad=EditarPersonasComponent.persona.ciudad;
-    this.datos.password=EditarPersonasComponent.persona.password;
+    this.datos.genero=this.persona.genero;
+    this.datos.ocupacion=this.persona.ocupacion;
+    this.datos.tipo_sangre=this.persona.tipo_sangre;
+    this.datos.ciudad=this.persona.ciudad;
+    this.datos.password=this.persona.password;
   }
 
   editar_persona(): void {

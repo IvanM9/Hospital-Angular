@@ -23,10 +23,18 @@ export class ListarPersonasComponent implements OnInit {
     });
   }
 
+  edit: any;
+  cargado: boolean = false;
   editapersona(datos: any) {
-    EditarPersonasComponent.persona = datos;
-    this.router.navigateByUrl("/editar-personas");
+    this.cargado = true;
+    this.edit = datos;
+    // console.log(this.edit);
   }
+  cerrarEdicion(){
+    this.cargado=false;
+    this.edit=null;
+  }
+  
 
   borrarregistro(cedula: any) {
     this.serv_person.eliminar_personas(cedula).subscribe(response => {
